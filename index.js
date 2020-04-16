@@ -18,8 +18,10 @@ function createChild (child, children) {
     return fastn('list:' + child.tagName, attributes)
   }
 
-  if (child.tagName === 'binding') {
-    return fastn('text', {text: binding(attributes.value)} )
+  if (child.tagName === 'text') {
+    return fastn('text', {
+      text: binding(attributes.data.trim().replace(`binding('`, '').slice(0, -2))
+    })
   }
   
   return fastn(child.tagName, attributes, ...children)
