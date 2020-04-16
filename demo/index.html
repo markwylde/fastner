@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fastner Demo</title>
+  <script src="fastner.min.js"></script>
+  <script src="index.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+  <h1>List of items</h1>
+  <table class="test-table">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Tags</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+
+    <tbody list="products">
+      <tr class="{{item.complete ? 'active' : ''}}">
+        <td>
+          <binding value="item.title" />
+        </td>
+
+        <td>
+          <ul class="tag-list" list="item.tags">
+            <li><binding value="item" /></li>
+          </ul>
+        </td>
+
+        <td>
+          £<binding value="item.price" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h1>Total</h1>
+  <p>£<binding value="totalPrice" /></p>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+/*
+  TABLES
+*/
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table th {
+  text-align: left;
+}
+
+table td, table th {
+  padding: 5px;
+  border-top: 1px solid #d6d6d6;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+ul.tag-list {
+  margin: 0;
+  padding: 0;
+}
+
+.tag-list li:not(:last-child):after {
+  content: ',';
+  margin-right: 5px;
+}
+
+.tag-list li {
+  display: inline-block;
+}

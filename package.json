@@ -1,0 +1,24 @@
+{
+  "name": "qae",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify -o demo/fastner.min.js index.js",
+    "watch": "watchify -o demo/fastner.min.js index.js",
+    "start": "ws -d demo & npm run watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "browserify": "^16.5.1",
+    "fastn": "^2.14.0",
+    "watchify": "^3.11.1",
+    "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "local-web-server": "^4.0.0"
+  }
+}
