@@ -55,5 +55,7 @@ function fastner (element, state) {
   element.replaceWith(app.element)
 }
 
-window.fastner = fastner
+window.fastn = fastn
 window.mutate = mutate
+window.binding = binding
+window.fastner = fastner
