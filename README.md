@@ -1,5 +1,5 @@
 # fastner
-Build fastn UI's quickly using HTML and JS straight in the browser
+Build [fastn](https://github.com/korynunn/fastn) UI's quickly using HTML and JS straight in the browser
 
 ## Getting Started
 ```bash
