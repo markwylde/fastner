@@ -1,4 +1,4 @@
-const {fastn, binding} = require('./fastn')
+const {fastn, binding, mutate} = require('./fastn')
 
 function fetchAttributes (node) {
   return node && Array.prototype.reduce.call(node.attributes, function(list, attribute) {
@@ -56,3 +56,4 @@ function fastner (element, state) {
 }
 
 window.fastner = fastner
+window.mutate = mutate
