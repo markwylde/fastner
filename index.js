@@ -10,7 +10,7 @@ function fetchAttributes (node) {
 function createChild (child, children) {
   const attributes = fetchAttributes(child)
   if (attributes.list) {
-    attributes.items = binding(attributes.list)
+    attributes.items = eval(attributes.list)
 
     attributes.template = () =>
       objectToFastn(Array.from(child.childNodes).find(el => el.nodeName !== '#text'))
@@ -20,7 +20,7 @@ function createChild (child, children) {
 
   if (child.tagName === 'text') {
     return fastn('text', {
-      text: binding(attributes.data.trim().replace(`binding('`, '').slice(0, -2))
+      text: eval(attributes.data)
     })
   }
   

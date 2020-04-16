@@ -19,14 +19,14 @@
       </tr>
     </thead>
 
-    <tbody list="products">
-      <tr class="binding(item, item => item.complete ? 'active' : '')}}">
+    <tbody list="binding('products')">
+      <tr class="binding('item', item => item.complete ? 'active' : '')}}">
         <td>
           <text data="binding('item.title')" />
         </td>
 
         <td>
-          <ul class="tag-list" list="item.tags">
+          <ul class="tag-list" list="binding('item.tags')">
             <li><text data="binding('item')" /></li>
           </ul>
         </td>
