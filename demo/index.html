@@ -19,27 +19,27 @@
       </tr>
     </thead>
 
-    <tbody list="binding('products')">
-      <tr class="binding('item', item => item.complete ? 'active' : '')">
+    <tbody list:binding="'products'">
+      <tr class:binding="'item', item => item.complete ? 'active' : ''">
         <td>
-          <text data="binding('item.title')" />
+          <text data:binding="'item.title'" />
         </td>
 
         <td>
-          <ul class="tag-list" list="binding('item.tags')">
-            <li><text data="binding('item')" /></li>
+          <ul class="tag-list" list:binding="'item.tags'">
+            <li><text data:binding="'item'" /></li>
           </ul>
         </td>
 
         <td>
-          £<text data="binding('item.price')" />
+          £<text data:binding="'item.price'" />
         </td>
       </tr>
     </tbody>
   </table>
 
   <h1>Total</h1>
-  <p>£<text data="binding('totalPrice')" /></p>
+  <p>£<text data:binding="'totalPrice'" /></p>
 
 </body>
 </html>

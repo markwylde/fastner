@@ -31,7 +31,7 @@ Create an empty index.html anywhere with the following contents:
 </head>
 <body>
   <h1>Hello</h1>
-  <p>We want to give a big hello to <text data="binding('name')" /></p>
+  <p>We want to give a big hello to <text data:binding="'name'" /></p>
 </body>
 </html>
 ```

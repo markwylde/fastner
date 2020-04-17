@@ -1,13 +1,23 @@
 const { fastn, binding, mutate } = require('./fastn');
 
+function execute (code) {
+  try {
+    return eval(code);
+  } catch (error) {
+    console.error('Could not execute js:\n' + code, error);
+    throw error;
+  }
+}
+
 function fetchAttributes (node) {
   if (!node) {
     return {};
   }
 
   return Array.prototype.reduce.call(node.attributes, function (list, attribute) {
-    if (attribute.value.startsWith('binding(')) {
-      list[attribute.name] = eval(attribute.value);
+    if (attribute.name.endsWith(':binding')) {
+      list[attribute.name.slice(0, -':binding'.length)] = execute(`binding(${attribute.value})`);
+      delete list[attribute.name];
     } else {
       list[attribute.name] = attribute.value;
     }
@@ -18,8 +28,9 @@ function fetchAttributes (node) {
 
 function createChild (child, children) {
   const attributes = fetchAttributes(child);
+
   if (attributes.list) {
-    attributes.items = eval(attributes.list);
+    attributes.items = attributes.list;
 
     attributes.template = () =>
       objectToFastn(Array.from(child.childNodes).find(el => el.nodeName !== '#text'));
@@ -27,9 +38,9 @@ function createChild (child, children) {
     return fastn('list:' + child.tagName, attributes);
   }
 
-  if (child.tagName === 'text') {
+  if (child.tagName === 'TEXT') {
     return fastn('text', {
-      text: eval(attributes.data)
+      text: attributes.data
     });
   }
 
@@ -54,8 +65,9 @@ function objectToFastn (obj) {
 
 function fastner (element, state) {
   const dom = (new DOMParser()).parseFromString(
-    `<${element.tagName}>${element.innerHTML}</${element.tagName}>`
-    , 'text/xml');
+    `
+    <${element.tagName}>${element.innerHTML}</${element.tagName}>`
+    , 'text/html');
 
   const app = objectToFastn(dom.childNodes[0])
     .attach(state);
